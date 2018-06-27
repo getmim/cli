@@ -2,10 +2,12 @@
 /**
  * Tool tools
  * @package cli
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 namespace Cli\Controller;
+
+use Cli\Library\Bash;
 
 class ToolController extends \Cli\Controller
 {
@@ -13,25 +15,26 @@ class ToolController extends \Cli\Controller
         $gates  = include BASEPATH . '/etc/cache/gates.php';
         $routes = include BASEPATH . '/etc/cache/routes.php';
         
-        $this->echo('Usage: mim [command] [options...]');
-        $this->echo('');
+        Bash::echo('Usage: mim [command] [options...]');
+        Bash::echo('');
         
         foreach($gates as $gate){
             if($gate->host->value !== 'CLI')
                 continue;
             $base = $gate->path->value;
+            Bash::echo('' . $gate->name . '');
             foreach($routes->{$gate->name} as $route){
-                $pref = ' ' . trim($route->path->value);
+                $pref = '  ' . trim($route->path->value);
                 $pref = str_pad($pref, 40, ' ');
                 $pref.= $route->info ?? 'No info provided';
-                $this->echo($pref);
+                Bash::echo($pref);
             }
+            Bash::echo('');
         }
-        $this->echo('');
     }
     
     public function versionAction(): void{
-        $this->echo($this->config->name);
+        Bash::echo($this->config->name);
         $dirs = \Mim\Library\Fs::scan(BASEPATH . '/modules');
         sort($dirs);
         foreach($dirs as $dir){
@@ -41,7 +44,7 @@ class ToolController extends \Cli\Controller
             $mod = '- ' . $dir;
             $mod_config = include $dir_abs . '/config.php';
             $mod.= ' ' . $mod_config['__version'];
-            $this->echo($mod);
+            Bash::echo($mod);
         }
     }
 }

@@ -7,7 +7,7 @@
 
 return [
     '__name' => 'cli',
-    '__version' => '0.0.1',
+    '__version' => '0.0.2',
     '__git' => 'git@github.com:getphun/cli.git',
     '__license' => 'MIT',
     '__author' => [
@@ -33,8 +33,12 @@ return [
             ],
             'Cli\\Controller' => [
                 'type' => 'file',
-                'base' => 'modules/cli/library/Controller.php',
+                'base' => 'modules/cli/system/Controller.php',
                 'children' => 'modules/cli/controller'
+            ],
+            'Cli\\Library' => [
+                'type' => 'file',
+                'base' => 'modules/cli/library',
             ]
         ]
     ],
