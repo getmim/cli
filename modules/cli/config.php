@@ -29,10 +29,10 @@ return [
     ],
     'autoload' => [
         'classes' => [
-            'Cli\\Server' => [
-                'type' => 'file',
-                'base' => 'modules/cli/server'
-            ],
+        	'Cli\\Autocomplete' => [
+        		'type' => 'file',
+        		'base' => 'modules/cli/system/Autocomplete.php'
+        	],
             'Cli\\Controller' => [
                 'type' => 'file',
                 'base' => 'modules/cli/system/Controller.php',
@@ -41,6 +41,10 @@ return [
             'Cli\\Library' => [
                 'type' => 'file',
                 'base' => 'modules/cli/library',
+            ],
+            'Cli\\Server' => [
+                'type' => 'file',
+                'base' => 'modules/cli/server'
             ]
         ]
     ],
@@ -65,6 +69,7 @@ return [
             ],
             'toolAutocomplete' => [
                 'info' => 'Internal autocomplete provider',
+                'skipHelp' => true,
                 'path' => [
                     'value' => 'autocomplete (:command)',
                     'params'=> [

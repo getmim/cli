@@ -13,18 +13,21 @@ _mim_get_args(){
 }
 
 _mim(){
-	local ARGS CURRENT LE_FILE
+	local ARGS cur
+
+	cur="${COMP_WORDS[COMP_CWORD]}"
 
 	COMPREPLY=()
-	CURRENT="${COMP_WORDS[COMP_CWORD]}"
 	ARGS=$(_mim_get_args ${COMP_WORDS[@]:1})
 	RESULT=$(mim autocomplete $ARGS)
 
-	if [ "1" != "$RESULT" ]; then
-		COMPREPLY=( $(compgen -W "$RESULT" -- ${CURRENT}) )
+	if [ "2" = "$RESULT" ]; then
+		_filedir
+	elif [ "1" != "$RESULT" ]; then
+		COMPREPLY=( $(compgen -W "$RESULT" -- "$cur") )
 	fi
 
-	return 0
+	# return 0
 }
 
 complete -F _mim mim

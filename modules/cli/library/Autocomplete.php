@@ -7,7 +7,7 @@
 
 namespace Cli\Library;
 
-class Autocomplete
+class Autocomplete extends \Cli\Autocomplete
 {
 	static function none(): string{
 		return '1';
@@ -34,24 +34,10 @@ class Autocomplete
                 	$result[] = $bpath;
             }
         }
-
-        $result_imploded = trim(implode(' ', $result));
-
+        
         if($farg === '-')
-        	return $result_imploded;
+        	return trim(implode(' ', $result));
 
-        if(in_array($farg, $result))
-        	return '1';
-
-        $farglen = strlen($farg);
-        $match_found = false;
-        foreach($result as $res){
-        	if($farg === substr($res, 0, $farglen)){
-        		$match_found = true;
-        		break;
-        	}
-        }
-
-        return $match_found ? $result_imploded : '1';
+        return parent::lastArg($farg, $result);
 	}
 }

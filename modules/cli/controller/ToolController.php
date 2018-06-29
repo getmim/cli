@@ -54,6 +54,9 @@ class ToolController extends \Cli\Controller
             Bash::echo('' . $gate->name . '');
             
             foreach($routes->{$gate->name} as $route){
+            	$skip_help = $route->skipHelp ?? false;
+            	if($skip_help)
+            		continue;
                 $pref = '  ' . trim($route->path->value);
                 $pref = str_pad($pref, 40, ' ');
                 $pref.= $route->info ?? 'No info provided';
