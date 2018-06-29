@@ -1,4 +1,9 @@
 #!/bin/bash
 
-BASEDIR=$(dirname "$0")
+LE_FILE=$(realpath "$0")
+if [ -L "$LE_FILE" ]; then
+	LE_FILE=$(readlink -f "$LE_FILE")
+fi
+
+BASEDIR=$(dirname "$LE_FILE")
 php "$BASEDIR/index.php" "$@"
