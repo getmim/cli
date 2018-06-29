@@ -2,12 +2,12 @@
 /**
  * CLI Base
  * @package cli
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 return [
     '__name' => 'cli',
-    '__version' => '0.0.4',
+    '__version' => '0.0.5',
     '__git' => 'git@github.com:getphun/cli.git',
     '__license' => 'MIT',
     '__author' => [
@@ -16,6 +16,7 @@ return [
         'website' => 'https://iqbalfn.com/'
     ],
     '__files' => [
+    	'etc/bash' => ['install', 'update', 'remove'],
         'modules/cli' => ['install', 'update', 'remove'],
         'mim' => ['install', 'update', 'remove']
     ],
@@ -63,19 +64,22 @@ return [
             '500' => [
                 'handler' => 'Cli\\Controller::show500'
             ],
+            'toolAutocomplete' => [
+                'info' => 'Internal autocomplete provider',
+                'path' => [
+                    'value' => 'autocomplete (:command)',
+                    'params'=> [
+                        'command' => 'rest'
+                    ]
+                ],
+                'handler' => 'Cli\\Controller\\Tool::autocomplete'
+            ],
             'toolHelp' => [
                 'info' => 'Show this information',
                 'path' => [
                     'value' => 'help'
                 ],
                 'handler' => 'Cli\\Controller\\Tool::help'
-            ],
-            'toolServer' => [
-                'info' => 'Test server installation',
-                'path' => [
-                    'value' => 'server'
-                ],
-                'handler' => 'Cli\\Controller\\Tool::server'
             ],
             'toolVersion' => [
                 'info' => 'Show installed tools version',
@@ -89,6 +93,25 @@ return [
     'server' => [
         'cli' => [
             'Readline' => 'Cli\\Server\\PHP::readline'
+        ]
+    ],
+
+    'cli' => [
+        'autocomplete' => [
+            '!^(help|version)$!' => [
+                'priority' => 999999,
+                'handler' => [
+                    'class' => 'Cli\\Library\Autocomplete',
+                    'method' => 'none'
+                ]
+            ],
+            '!^[a-z]*$!' => [
+                'priority' => 1000000,
+                'handler' => [
+                    'class' => 'Cli\\Library\Autocomplete',
+                    'method' => 'primary'
+                ]
+            ]
         ]
     ]
 ];
