@@ -2,7 +2,7 @@
 /**
  * CLI Base controller
  * @package cli
- * @version 0.0.2
+ * @version 0.0.4
  */
 
 namespace Cli;
@@ -16,7 +16,7 @@ class Controller extends \Mim\Controller implements \Mim\Iface\GateController
     }
     
     public function show404Action(): void{
-        Bash::echo('Unknow action. Please hit `mim help` for list of actions');
+        Bash::error('Unknow action, please hit `mim help` for list of actions');
     }
     
     public function show500(object $error): void{

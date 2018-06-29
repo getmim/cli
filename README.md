@@ -8,7 +8,7 @@ menyediakan tools yang berhubungan dengan aplikasi.
 
 ```
 wget http://getmim.github.io/tools/installer.php
-php ./installer.php
+php installer.php
 ```
 
 Fungsi di atas akan mendownload installer tools ini dan memasangnya pada pc. Module
