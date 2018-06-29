@@ -2,7 +2,7 @@
 /**
  * autocomplete provider
  * @package cli
- * @version 0.0.5
+ * @version 0.0.7
  */
 
 namespace Cli\Library;
@@ -29,17 +29,29 @@ class Autocomplete
                 $bpath = explode(' ', trim($route->path->value))[0];
                 if($bpath === 'autocomplete')
                 	continue;
-                
-                if($farg === $bpath){
-            		$result = ['1'];
-                	break 2;
-                }
 
                 if(!in_array($bpath, $result))
                 	$result[] = $bpath;
             }
         }
 
-        return trim(implode(' ', $result));
+        $result_imploded = trim(implode(' ', $result));
+
+        if($farg === '-')
+        	return $result_imploded;
+
+        if(in_array($farg, $result))
+        	return '1';
+
+        $farglen = strlen($farg);
+        $match_found = false;
+        foreach($result as $res){
+        	if($farg === substr($res, 0, $farglen)){
+        		$match_found = true;
+        		break;
+        	}
+        }
+
+        return $match_found ? $result_imploded : '1';
 	}
 }
