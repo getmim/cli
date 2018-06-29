@@ -2,7 +2,7 @@
 /**
  * Tool tools
  * @package cli
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 namespace Cli\Controller;
@@ -19,7 +19,7 @@ class ToolController extends \Cli\Controller
 		$rules = (array)$this->config->cli->autocomplete;
 
 		uasort($rules, function($a, $b){
-			return $a->priority - $b->priority;
+			return $b->priority - $a->priority;
 		});
 
         $print = 1;

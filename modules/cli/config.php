@@ -2,12 +2,12 @@
 /**
  * CLI Base
  * @package cli
- * @version 0.0.5
+ * @version 0.0.6
  */
 
 return [
     '__name' => 'cli',
-    '__version' => '0.0.5',
+    '__version' => '0.0.6',
     '__git' => 'git@github.com:getphun/cli.git',
     '__license' => 'MIT',
     '__author' => [
@@ -16,7 +16,6 @@ return [
         'website' => 'https://iqbalfn.com/'
     ],
     '__files' => [
-    	'etc/bash' => ['install', 'update', 'remove'],
         'modules/cli' => ['install', 'update', 'remove'],
         'mim' => ['install', 'update', 'remove']
     ],
@@ -99,16 +98,16 @@ return [
     'cli' => [
         'autocomplete' => [
             '!^(help|version)$!' => [
-                'priority' => 999999,
+                'priority' => 2,
                 'handler' => [
-                    'class' => 'Cli\\Library\Autocomplete',
+                    'class' => 'Cli\\Library\\Autocomplete',
                     'method' => 'none'
                 ]
             ],
             '!^[a-z]*$!' => [
-                'priority' => 1000000,
+                'priority' => 1,
                 'handler' => [
-                    'class' => 'Cli\\Library\Autocomplete',
+                    'class' => 'Cli\\Library\\Autocomplete',
                     'method' => 'primary'
                 ]
             ]
