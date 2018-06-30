@@ -16,6 +16,7 @@ return [
         'website' => 'https://iqbalfn.com/'
     ],
     '__files' => [
+        'etc/bash' => ['install', 'update', 'remove'],
         'modules/cli' => ['install', 'update', 'remove'],
         'mim' => ['install', 'update', 'remove']
     ],
