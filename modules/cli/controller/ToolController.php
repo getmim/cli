@@ -11,33 +11,33 @@ use Cli\Library\Bash;
 
 class ToolController extends \Cli\Controller
 {
-	public function autocompleteAction(): void{
-		$params = trim(implode(' ', $this->req->param->command));
+    public function autocompleteAction(): void{
+        $params = trim(implode(' ', $this->req->param->command));
         if($params === '-')
             $params = '';
 
-		$rules = (array)$this->config->cli->autocomplete;
+        $rules = (array)$this->config->cli->autocomplete;
 
-		uasort($rules, function($a, $b){
-			return $b->priority - $a->priority;
-		});
+        uasort($rules, function($a, $b){
+            return $b->priority - $a->priority;
+        });
 
         $print = 1;
 
-		foreach($rules as $regex => $handler){
-			if(!preg_match($regex, $params))
-				continue;
-			$hdr = $handler->handler;
+        foreach($rules as $regex => $handler){
+            if(!preg_match($regex, $params))
+                continue;
+            $hdr = $handler->handler;
             
-			$class = $hdr->class;
-			$method = $hdr->method;
+            $class = $hdr->class;
+            $method = $hdr->method;
 
-			$print = $class::$method($this->req->param->command);
+            $print = $class::$method($this->req->param->command);
             break;
-		}
+        }
 
-		Bash::echo($print);
-	}
+        Bash::echo($print);
+    }
 
     public function helpAction(): void{
         $gates  = include BASEPATH . '/etc/cache/gates.php';
@@ -54,9 +54,9 @@ class ToolController extends \Cli\Controller
             Bash::echo('' . $gate->name . '');
             
             foreach($routes->{$gate->name} as $route){
-            	$skip_help = $route->skipHelp ?? false;
-            	if($skip_help)
-            		continue;
+                $skip_help = $route->skipHelp ?? false;
+                if($skip_help)
+                    continue;
                 $pref = '  ' . trim($route->path->value);
                 $pref = str_pad($pref, 40, ' ');
                 $pref.= $route->info ?? 'No info provided';
