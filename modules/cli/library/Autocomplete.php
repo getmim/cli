@@ -9,6 +9,10 @@ namespace Cli\Library;
 
 class Autocomplete extends \Cli\Autocomplete
 {
+    static function files(): string{
+        return '2';
+    }
+    
     static function none(): string{
         return '1';
     }
