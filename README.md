@@ -28,24 +28,31 @@ mim version
 
 mim app init
 mim app config
-mim app install [module[ module[ ...]]]
+mim app install (module[ ...]) | -
 mim app module
-mim app remove [module[ module[ ...]]]
+mim app remove (module[ ...]) | -
 mim app server
-mim app update [module[ module[ ...]]]
+mim app update (module[ ...]) | -
 
 # Jika module cli-module terinstall
 
 mim module init
-mim module controller [name]
-mim module helper [name]
-mim module library [name]
-mim module model [table] [q_field]
-mim module service [name]
-mim module watch [target]
-mim module sync [target]
+mim module controller (name)
+mim module helper (name)
+mim module library (name)
+mim module model (name)
+mim module service (name)
+mim module watch (target[ ...])
+mim module sync (target[ ...])
 
 # Jika module cli-compress terinstall
 
-mim compress [all|webp|gz|br] [file[ file[ ...]]]
+mim compress (all|gzip|brotli|webp) (file[ ...])
+
+# Jika module cli-worker terinstall
+
+mim worker start
+mim worker restart
+mim worker stop
+mim worker status
 ```
