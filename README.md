@@ -1,8 +1,9 @@
 cli
 ===
 
-Command line tools untuk mempermudah bekerja dengan framework mim. Module ini
-menyediakan tools yang berhubungan dengan aplikasi.
+Sebagian besar aktifitas development dengan framework mim tidak bisa terlepas dari
+penggunaan CLI. Banyak pekerjaan-pekerjaan yang dipermudah, dan banyak juga pekerjaan
+hanya bisa dikerjakan melalui CLI.
 
 ## Instalasi
 
@@ -38,7 +39,7 @@ mim app update (module[ ...]) | -
 
 mim app migrate start
 mim app migrate test
-mim app migrate scheme (file)
+mim app migrate scheme (:file)
 
 # Jika module cli-module terinstall
 
