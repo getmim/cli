@@ -34,6 +34,12 @@ mim app remove (module[ ...]) | -
 mim app server
 mim app update (module[ ...]) | -
 
+# Jika module cli-app-model terinstall
+
+mim app migrate start
+mim app migrate test
+mim app migrate scheme (file)
+
 # Jika module cli-module terinstall
 
 mim module init
