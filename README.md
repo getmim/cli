@@ -37,9 +37,9 @@ mim app update (module[ ...]) | -
 
 # Jika module cli-app-model terinstall
 
-mim app migrate start
-mim app migrate test
-mim app migrate scheme (:file)
+mim [--table=...,...] app migrate start
+mim [--table=...,...] app migrate test
+mim [--table=...,...] app migrate schema (:dirname)
 
 # Jika module cli-module terinstall
 
