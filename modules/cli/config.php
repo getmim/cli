@@ -51,7 +51,7 @@ return [
     ],
     'gates' => [
         'tool' => [
-            'priority' => 2000,
+            'priority' => 1,
             'host' => [
                 'value' => 'CLI'
             ],
