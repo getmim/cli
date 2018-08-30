@@ -20,11 +20,15 @@ class Controller extends \Mim\Controller implements \Mim\Iface\GateController
     }
     
     public function show500(object $error): void{
-        $this->show500Action($error);
+        Bash::echo($error->text);
+        Bash::echo($error->file . ' (' . $error->line . ')');
+        if(isset($error->trace)){
+            foreach($error->trace as $trace)
+                Bash::echo($trace['file'] . ' (' . $trace['line'] . ')', 4);
+        }
     }
     
     public function show500Action(): void{
-        Bash::echo('Internal Application Error');
-        Bash::echo($error);
+        $this->show500(\Mim\Library\Logger::$last_error);
     }
 }

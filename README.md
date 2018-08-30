@@ -46,6 +46,7 @@ mim [--table=...,...] app migrate schema (:dirname)
 mim module init
 mim module controller (name)
 mim module helper (name)
+mim module interface (name)
 mim module library (name)
 mim module model (name)
 mim module service (name)
