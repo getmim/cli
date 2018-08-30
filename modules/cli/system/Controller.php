@@ -23,7 +23,7 @@ class Controller extends \Mim\Controller implements \Mim\Iface\GateController
         $this->show500Action($error);
     }
     
-    public function show500Action(object $error): void{
+    public function show500Action(): void{
         Bash::echo('Internal Application Error');
         Bash::echo($error);
     }
