@@ -23,8 +23,10 @@ class Controller extends \Mim\Controller implements \Mim\Iface\GateController
         Bash::echo($error->text);
         Bash::echo($error->file . ' (' . $error->line . ')');
         if(isset($error->trace)){
-            foreach($error->trace as $trace)
-                Bash::echo($trace['file'] . ' (' . $trace['line'] . ')', 4);
+            foreach($error->trace as $trace){
+                if(isset($trace['file']))
+                    Bash::echo($trace['file'] . ' (' . $trace['line'] . ')', 4);
+            }
         }
     }
     
