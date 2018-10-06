@@ -16,9 +16,9 @@ return [
         'website' => 'https://iqbalfn.com/'
     ],
     '__files' => [
-        'etc/bash' => ['install', 'update', 'remove'],
+        'etc/bash'    => ['install', 'update', 'remove'],
         'modules/cli' => ['install', 'update', 'remove'],
-        'mim' => ['install', 'update', 'remove']
+        'mim'         => ['install', 'update', 'remove']
     ],
     '__dependencies' => [
         'required' => [
@@ -27,6 +27,10 @@ return [
             ]
         ],
         'optional' => []
+    ],
+    '__gitignore' => [
+        'etc/bash/au.sh' => true,
+        'mim' => true
     ],
     'autoload' => [
         'classes' => [
