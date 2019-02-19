@@ -21,7 +21,7 @@ yang dipasang dengan menjalankan perintah di atas adalah module `core`, `cli`, d
 Di bawah ini adalah perintah-perintah yang didukung oleh module ini secara default.
 Untuk mendukung perintah-perintah lainnya, silahkan memasang module yang bersangkutan.
 
-```
+```bash
 mim help
 mim version
 
@@ -41,6 +41,13 @@ mim [--table=...,...] app migrate start
 mim [--table=...,...] app migrate test
 mim [--table=...,...] app migrate schema (:dirname)
 
+# Jika module cli-app-worker terinstall
+
+mim app worker start
+mim app worker stop
+mim app worker status
+mim app worker pid
+
 # Jika module cli-module terinstall
 
 mim module init
@@ -56,11 +63,4 @@ mim module sync (target[ ...])
 # Jika module cli-compress terinstall
 
 mim compress (all|gzip|brotli|webp) (file[ ...])
-
-# Jika module cli-worker terinstall
-
-mim worker start
-mim worker restart
-mim worker stop
-mim worker status
 ```
