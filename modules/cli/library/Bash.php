@@ -35,17 +35,17 @@ class Bash
             self::echo($opt->text . ': ', $opt->space);
             foreach($opt->options as $key => $val)
                 self::echo(' ' . $key . ') ' . $val, $opt->space);
-            self::echo(' Your choice: ', $opt->space, false);
+            self::echo(' Your choice ', $opt->space, false);
         }else{
             $suffix = '';
             if($opt->type === 'bool')
                 $suffix = $opt->default ? ' (Y/n)' : ' (y/N)';
             elseif($opt->default)
                 $suffix = ' (' . $opt->default . ')';
-            self::echo($opt->text . $suffix . ': ', $opt->space, false);
+            self::echo($opt->text . $suffix, $opt->space, false);
         }
         
-        $ans = readline();
+        $ans = readline(': ');
         if($ans === '')
             $ans = $opt->default;
         else
