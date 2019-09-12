@@ -99,6 +99,12 @@ class Bash
         if($exit)
             exit;
     }
+
+    static function json($data): void{
+        $data = json_encode($data);
+
+        self::echo($data);
+    }
     
     static function run(string $cmd): object{
         $code = 0;
