@@ -7,7 +7,7 @@
 
 return [
     '__name' => 'cli',
-    '__version' => '0.0.8',
+    '__version' => '0.1.0',
     '__git' => 'git@github.com:getphun/cli.git',
     '__license' => 'MIT',
     '__author' => [
@@ -73,6 +73,14 @@ return [
                 'handler' => 'Cli\\Controller::show500'
             ],
             'toolAutocomplete' => [
+                'info' => 'Internal autocomplete provider',
+                'skipHelp' => true,
+                'path' => [
+                    'value' => 'autocomplete'
+                ],
+                'handler' => 'Cli\\Controller\\Tool::autocomplete'
+            ],
+            'toolAutocompleteArgs' => [
                 'info' => 'Internal autocomplete provider',
                 'skipHelp' => true,
                 'path' => [

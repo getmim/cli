@@ -12,7 +12,8 @@ use Cli\Library\Bash;
 class ToolController extends \Cli\Controller
 {
     public function autocompleteAction(): void{
-        $params = trim(implode(' ', $this->req->param->command));
+        $command = $this->req->param->command ?? [];
+        $params = trim(implode(' ', $command));
         if($params === '-')
             $params = '';
 
@@ -32,7 +33,7 @@ class ToolController extends \Cli\Controller
             $class = $hdr->class;
             $method = $hdr->method;
 
-            $print = $class::$method($this->req->param->command);
+            $print = $class::$method($command);
             break;
         }
 

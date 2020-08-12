@@ -18,7 +18,7 @@ class Autocomplete extends \Cli\Autocomplete
     }
 
     static function primary($args): string{
-        $farg = $args[0];
+        $farg = $args[0] ?? '-';
 
         $gates  = include BASEPATH . '/etc/cache/gates.php';
         $routes = include BASEPATH . '/etc/cache/routes.php';
