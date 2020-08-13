@@ -31,21 +31,27 @@ class Bash
             'default'   => $opts['default'] ?? ''
         ];
         
+        $rl_text = '';
+        $rl_space= 0;
         if($opt->options){
             self::echo($opt->text . ': ', $opt->space);
             foreach($opt->options as $key => $val)
                 self::echo(' ' . $key . ') ' . $val, $opt->space);
-            self::echo(' Your choice ', $opt->space, false);
+            $rl_text = ' Your choice ';
+            $rl_space= $opt->space;
         }else{
             $suffix = '';
             if($opt->type === 'bool')
                 $suffix = $opt->default ? ' (Y/n)' : ' (y/N)';
             elseif($opt->default)
                 $suffix = ' (' . $opt->default . ')';
-            self::echo($opt->text . $suffix, $opt->space, false);
+
+            $rl_text = $opt->text . $suffix;
+            $rl_space= $opt->space;
         }
         
-        $ans = readline(': ');
+        $rl_qst = str_repeat(' ', $rl_space) . $rl_text;
+        $ans = readline($rl_qst . ': ');
         if($ans === '')
             $ans = $opt->default;
         else
