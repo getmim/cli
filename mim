@@ -2,7 +2,7 @@
 
 mim_realpath() {
 	if type realpath &>/dev/null; then
-		echo realpath "$0"
+		echo $(realpath "$0")
 	else
 		[[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 	fi
