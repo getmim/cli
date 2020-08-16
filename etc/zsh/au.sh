@@ -1,4 +1,4 @@
-compdef mim
+#compdef mim
 
 _mim_get_args(){
     local RESULT
