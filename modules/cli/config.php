@@ -7,7 +7,7 @@
 
 return [
     '__name' => 'cli',
-    '__version' => '0.1.3',
+    '__version' => '0.2.0',
     '__git' => 'git@github.com:getphun/cli.git',
     '__license' => 'MIT',
     '__author' => [
@@ -17,6 +17,7 @@ return [
     ],
     '__files' => [
         'etc/bash'    => ['install', 'update', 'remove'],
+        'etc/zsh'    => ['install', 'update', 'remove'],
         'modules/cli' => ['install', 'update', 'remove'],
         'mim'         => ['install', 'update', 'remove']
     ],
