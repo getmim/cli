@@ -24,43 +24,4 @@ Untuk mendukung perintah-perintah lainnya, silahkan memasang module yang bersang
 ```bash
 mim help
 mim version
-
-# Jika module cli-app terinstall
-
-mim app init
-mim app config
-mim app install (module[ ...]) | -
-mim app module
-mim app remove (module[ ...]) | -
-mim app server
-mim app update (module[ ...]) | -
-
-# Jika module cli-app-model terinstall
-
-mim [--table=...,...] app migrate start
-mim [--table=...,...] app migrate test
-mim [--table=...,...] app migrate schema (:dirname)
-
-# Jika module cli-app-worker terinstall
-
-mim app worker start
-mim app worker stop
-mim app worker status
-mim app worker pid
-
-# Jika module cli-module terinstall
-
-mim module init
-mim module controller (name)
-mim module helper (name)
-mim module interface (name)
-mim module library (name)
-mim module model (name)
-mim module service (name)
-mim module watch (target[ ...])
-mim module sync (target[ ...])
-
-# Jika module cli-compress terinstall
-
-mim compress (all|gzip|brotli|webp) (file[ ...])
 ```
