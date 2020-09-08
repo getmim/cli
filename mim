@@ -18,4 +18,25 @@ do
 done
 
 BASEDIR=$(dirname "$LE_FILE")
-cd "$LE_HERE" && php "$BASEDIR/index.php" "$@"
+
+SP_CHARS="!>"
+MY_PID=$$
+TMP_FILE="/tmp/mim-proc-$MY_PID"
+
+cd "$LE_HERE"
+php "$BASEDIR/index.php" "$@" | 
+while read line
+do
+	if [[ $line == ">"* ]]; then
+		echo $line > $TMP_FILE
+	fi
+
+	echo $line
+done
+
+if [ -f "$TMP_FILE" ]; then
+	LAST_RESULT=$(<$TMP_FILE)
+	unlink $TMP_FILE
+	CMD=${LAST_RESULT:2}
+	eval "$CMD"
+fi
