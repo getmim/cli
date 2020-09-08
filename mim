@@ -29,9 +29,9 @@ while read line
 do
 	if [[ $line == ">"* ]]; then
 		echo $line > $TMP_FILE
+	else
+		echo $line
 	fi
-
-	echo $line
 done
 
 if [ -f "$TMP_FILE" ]; then
