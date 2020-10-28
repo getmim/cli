@@ -13,7 +13,14 @@ class ToolController extends \Cli\Controller
 {
     public function autocompleteAction(): void{
         $command = $this->req->param->command ?? [];
-        $params = trim(implode(' ', $command));
+
+        if($command){
+            $lidx = count($command) - 1;
+            $lval = $command[$lidx];
+            $command[$lidx] = preg_replace('!NULL$!', '', $lval);
+        }
+
+        $params = implode(' ', $command);
         if($params === '-')
             $params = '';
 
@@ -29,7 +36,7 @@ class ToolController extends \Cli\Controller
             if(!preg_match($regex, $params))
                 continue;
             $hdr = $handler->handler;
-            
+
             $class = $hdr->class;
             $method = $hdr->method;
 

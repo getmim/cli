@@ -10,14 +10,15 @@ _mim_get_args(){
             RESULT="$RESULT $ARG"
         done
 
-        echo "$RESULT"
+        echo "${RESULT}NULL"
     fi
 }
 
 _mim() {
 	local state ARGS RESULT REST
 
-	ARGS=$(_mim_get_args ${words[@]:1})
+	ARGS=$(_mim_get_args "${words##mim }")
+    
 	RESULT=$(mim autocomplete$ARGS)
 
 	if [ "2" = "$RESULT" ]; then

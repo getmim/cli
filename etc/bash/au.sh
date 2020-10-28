@@ -1,3 +1,5 @@
+
+
 _mim_get_args(){
     local RESULT
 
@@ -8,7 +10,7 @@ _mim_get_args(){
             RESULT="$RESULT $ARG"
         done
 
-        echo "$RESULT"
+        echo "${RESULT}NULL"
     fi
 }
 
@@ -18,7 +20,7 @@ _mim(){
     cur="${COMP_WORDS[COMP_CWORD]}"
 
     COMPREPLY=()
-    ARGS=$(_mim_get_args ${COMP_WORDS[@]:1})
+    ARGS=$(_mim_get_args "${COMP_WORDS##mim }")
     RESULT=$(mim autocomplete $ARGS)
 
     if [ "2" = "$RESULT" ]; then
