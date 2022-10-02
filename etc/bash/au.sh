@@ -14,13 +14,13 @@ _mim_get_args(){
     fi
 }
 
-_mim(){
+_mim() {
     local ARGS cur
 
     cur="${COMP_WORDS[COMP_CWORD]}"
 
     COMPREPLY=()
-    ARGS=$(_mim_get_args "${COMP_WORDS##mim }")
+    ARGS=$(_mim_get_args ${COMP_WORDS[@]:1})
     RESULT=$(mim autocomplete $ARGS)
 
     if [ "2" = "$RESULT" ]; then
